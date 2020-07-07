@@ -12,7 +12,7 @@ then
 fi
 if [ "$pip_exi" == "" ]
 then
-  sudo python3.7 -m ensurepip
+  sudo python3.7 -m ensurepip 
 fi
 if [ "$virtenv" == "" ]
 then
