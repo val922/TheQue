@@ -1,0 +1,431 @@
+
+
+{% from "_beloadingNotifier.html" import beloadingNotifier %}
+{% from "_wallpapers.js" import wallpapers %}
+<html>
+    <head>
+
+
+        <title>{% block title %} FQM - {{ page_title }} {% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-compatible" content="IE=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" ></script>
+        <link href="{{ url_for('static', filename='backstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='backstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='backstrap/css/bootstrap-theme.min.css.map') }}" rel="stylesheet">
+        <link rel="shortcut icon"
+            href="{{ url_for('static', filename='images/joining.png') }}"
+        >
+        <meta name="description" content="">
+            <meta name="keywords" content="">
+            <meta name="author" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+            <link rel="stylesheet" href="css/bootstrap.min.css">
+            <link rel="stylesheet" href="css/font-awesome.min.css">
+            <link rel="stylesheet" href="css/owl.carousel.css">
+            <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+            <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/templatemo-style.css">
+
+        <link href="{{ url_for('static', filename='css/gfonts.css') }}" rel="stylesheet">
+          <link href="{{ url_for('static', filename='css/.css') }}" rel="stylesheet">
+        {{ cssify('static/css/main.less') }}
+        {{ cssify('static/css/spacing.less') }}
+        <script src="{{ url_for('static', filename='backstrap/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='jquery-ui.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='backstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='wallpapers.js') }}"></script>
+
+        <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='custom.js') }}"></script>
+        <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+        <script src="{{ url_for('static', filename='smoothscroll.js') }}"></script>
+        <script src="{{ url_for('static', filename='owl.carousel.min.js') }}"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        {{ datepicker.loader() }}
+        {{ beloadingNotifier(version, beload=False, release=translate("You are using an older version of FQM, a newer release is available on fqms.github.io", 'en', [defLang]), firefox=translate("You are not using Firefox browser, which this project is designed and most suited for.", 'en', [defLang])) }}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                {{ wallpapers('.wallpapers', enable_reddit=settings.visual_effects, duration=30, overlay='rgba(0,0,0,0.0)') }}
+                {% if n or form.errors %}
+                // to toggle logging form modal if errors or unsigned login attempt
+                $("#upd").modal('show')
+                {% endif %}
+                $.getScript('https://fqms.github.io/js/releases.js')
+                    .done(function () {
+                        ['Windows', 'Linux', 'Mac'].forEach(function (os) {
+                            if (window.navigator.userAgent.indexOf(os) !== -1) {
+                                if (releases[os] && releases[os] !== '{{ version }}') {
+                                    var outdated = setInterval(function() {
+                                        $('.outdated').toggle('fade', 2000)
+                                        $('.fa-rss-square').effect('shake', 1000)
+                                    }, 2000)
+
+                                    $('.outdated').removeClass('hidden')
+                                    $('.outdated, .fa-rss-square').click(function(e) {
+                                        $('.outdated').fadeIn()
+                                        clearInterval(outdated)
+                                    })
+                                }
+                            }
+                        })
+                    })
+            })
+        </script>
+    </head>
+
+
+    <body>
+        {% from "_helpers.html" import render_field %}
+        <noscript>
+            <style>html{display:none;}</style>
+            <meta http-equiv="refresh" content="0.0;url=/nojs/0">
+        </noscript>
+
+        <!-- Navigation -->
+
+
+        <!-- Navigation -->
+
+      <header>
+
+     <!-- Navigation -->
+     <nav class="navbar navbar-default navbar-static-top">
+      <div class="container2">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">TheQue</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <sapn class="icon-bar"></sapn>
+          </button>
+        </div>
+        <ul class="nav navbar-nav navbar-right collapse navbar-collapse">
+          <li class="active"><a href="home">Home</a></li>
+          <li><a href="#service">Service</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contacts">Contacts</a></li>
+        </ul>
+
+
+
+
+      </div>
+
+
+
+
+       <div class ="right">
+                   <div class="box">
+          <div class="col-xs-12 text-center snb coat pt-2 pb-2">
+
+
+
+
+
+                        {% for toAdd in [['hidden-md hidden-lg', '4x'], ['hidden-sm hidden-xs', '5x']] %}
+
+
+
+
+                           {% endfor %}
+
+                         {% if current_user.is_authenticated %}
+                         <h2 class="text text-warning u">   </h2>
+                         <h3 class="text text-muted u mb-2">
+
+                         {% if getattr(current_user, 'role_id', None) == 1 %}
+                               {% elif getattr(current_user, 'role_id', None) == 2 %} Monitor
+                               {% else %} Operator
+                               {% endif %}
+
+                           </h3>
+                           <!-- If operator redirect to specific office instead of manage -->
+                           {% if getattr(current_user, 'role_id', None) == 3 %}
+                               {% if settings.single_row %}
+                                   <a class="button button-primary2" href="{{ url_for('manage_app.all_offices') }}">
+                               {% else %}
+                                   <a
+                                       class="button button-primary2"
+                                       href="{{ url_for('manage_app.offices', o_id=operators.filter_by(id=current_user.id).first().office_id) }}"
+                                   >
+                               {% endif %}
+                           {% else %}
+                               <a class="button button-primary2" href="{{ url_for('manage_app.manage') }}">
+                           {% endif %}
+                         {% else %}
+
+                         <a class="button button-primary2" data-target="#upd" data-toggle="modal">
+                         {% endif %}
+                           <strong class='mb-3'>
+                                   {{ translate("LogIn", 'en', [defLang]) }}
+                               </strong>
+
+                         </a>
+                       </div>
+                   </div>
+                 {% for category, message in get_flashed_messages(with_categories=true) %}
+                 <div class="row mb-1">
+                     <div class="alert alert-{{ category }} alert-dismissable">
+                           <button class="close" type="button" data-dismiss="alert">&times;</button>
+                           {% set tra = translate(message, 'en', [defLang]).split(':') %}
+                       <h4 class="text text-center ar2"> [ <strong>{{tra[0]}}</strong>: {{tra[1]}} ]</h4>
+                     </div>
+                 </div>
+                 {% endfor %}
+               </div>
+    </nav>
+
+<header  class="header-area overlay">
+
+
+     	<div class="banner">
+     		<div class="container">
+     			<h6>The Que</h6>
+     			<h5>Welcome to  TheQue.TheQue is an online queue management system</h5>
+     			<a href="#content" class="button button-primary">Learn More</a>
+     		</div>
+     	</div>
+     </header>
+
+     </header>
+
+     <main>
+     	<section id="content" class="content">
+     		<div class="container">
+     			<div class="row">
+     				<div class="col-md-4">
+              <h3>Your business is always available for reservations</h3>
+     					<p>You're closed for the day. Does that mean clients have to wait until the next day to book a spot? In other words, your customers can make a reservation whenever it fits into their schedule (without you or your employees having to be there). Additionally, studies have shown that immediate availability when shopping for products or services dramatically increases the number of purchases or appointments.
+
+With online booking, you'll capture more of the people looking to schedule an appointment or tee time. </p>
+     				</div>
+     				<div class="col-md-4">
+                <h3>Less phone time</h3>
+     					<p>With an online booking system in place, all the info players need to schedule with your course is right on the screen. Because there is no need to call in to your course, you're able to spend more time managing your business and the customers in your store, and less time worrying about missed phone calls or phone tag. </p>
+     				</div>
+     				<div class="col-md-4">
+                <h3>You get valuable insight about your business</h3>
+     					<p> Our Online booking system come with a dashboard of analytics that help you quickly determine your most popular sellers. With at-a-glance data that is simple to understand, you're able to focus on creating offers your customers want the most–and grow your business by doing so. </p>
+     				</div>
+     			</div>
+     		</div>
+     	</section>
+     </main>
+
+
+
+
+
+
+
+
+                <!-- FEATURE -->
+                  <section id="feature">
+                       <div class="container">
+                            <div class="row">
+
+                                 <div class="col-md-4 col-sm-4">
+                                      <div class="feature-thumb">
+                                           <span>01</span>
+                                           <h3>Online Booking</h3>
+                                           <p>An online booking system works all the time. This gives freedom to potential visitors to book a room anytime they want. It also maximises your sales because you are not limited to your working hours. In fact, studies show that a 24/7 online reservation system greatly increases the number of bookings.</p>
+                                      </div>
+                                 </div>
+
+                                 <div class="col-md-4 col-sm-4">
+                                      <div class="feature-thumb">
+                                           <span>02</span>
+                                           <h3>Mobile Application</h3>
+                                           <p>Increase accessibility. It allows businesses to be able to send notification about what's new or what has changed in their services or their products. It equally allows businesses to be able to build a strong relationship with customers which would allow the development of a genuine customer base and strong loyalty.</p>
+                                      </div>
+                                 </div>
+
+                                 <div class="col-md-4 col-sm-4">
+                                      <div class="feature-thumb">
+                                           <span>03</span>
+                                           <h3>Book a spot anywhere anytime</h3>
+                                           <p> One can Book a reservation whenever they want. Company customers  can use the booking system while at home and even while travelling. It is convenient for people on the go.</p>
+                                      </div>
+                                 </div>
+
+                            </div>
+                       </div>
+                  </section>
+
+
+                  <!-- ABOUT -->
+              <section id="about">
+                   <div class="container">
+                        <div class="row">
+
+                             <div class="col-md-6 col-sm-12">
+                                  <div class="about-info">
+                                       <h2>Queue Management system Start your journey to better time Management with TheQue</h2>
+
+                                       <figure>
+                                            <span><i class="fa fa-users"></i></span>
+                                            <figcaption>
+                                                 <h3>Queue Management</h3>
+                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                            </figcaption>
+                                       </figure>
+
+                                       <figure>
+                                            <span><i class="fa fa-certificate"></i></span>
+                                            <figcaption>
+                                                 <h3>Production Management</h3>
+                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                            </figcaption>
+                                       </figure>
+
+                                       <figure>
+                                            <span><i class="fa fa-bar-chart-o"></i></span>
+                                            <figcaption>
+                                                 <h3>Company Staticstics</h3>
+                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                            </figcaption>
+                                       </figure>
+                                  </div>
+                             </div>
+
+
+
+                        </div>
+                   </div>
+              </section>
+
+
+              <!-- FOOTER -->
+          <footer id="footer">
+               <div class="container">
+                    <div class="row">
+
+                         <div class="col-md-4 col-sm-6">
+                              <div class="footer-info">
+                                   <div class="section-title">
+                                        <h2>Headquarter</h2>
+                                   </div>
+                                   <address>
+                                        <p>Carramba Business Park, Unit 10,<br> Plot 43173, Phakalane Road, Phakalane, Gaborone, Botswana</p>
+                                   </address>
+
+                                   <ul class="social-icon">
+                                        <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                                        <li><a href="#" class="fa fa-twitter"></a></li>
+                                        <li><a href="#" class="fa fa-instagram"></a></li>
+                                   </ul>
+
+                                   <div class="copyright-text">
+                                        <p>Copyright &copy; 2019 Augmenta Cyber Security</p>
+
+
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="col-md-4 col-sm-6">
+                              <div class="footer-info">
+                                   <div class="section-title">
+                                        <h2>Contact Info</h2>
+                                   </div>
+                                   <address>
+                                        <p>Tel : +267 3116181, Fax : +267 3116182</p>
+
+                                   </address>
+
+                                   <div class="footer_menu">
+                                        <h2>Quick Links</h2>
+                                        <ul>
+                                             <li><a href="https://augcyba.co.za/">Career</a></li>
+
+                                             <li><a href="https://augcyba.co.za/">Terms & Conditions</a></li>
+
+                                        </ul>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="col-md-4 col-sm-12">
+                              <div class="footer-info newsletter-form">
+                                   <div class="section-title">
+
+                                   </div>
+                                   <div>
+                                        <div class="form-group">
+
+
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                    </div>
+               </div>
+          </footer>
+
+
+
+
+        {% if not current_user.is_authenticated %}
+        <div class="modal fade" id="upd" >
+            <div class="modal-dialog">
+        	    <div class="modal-content">
+        	        <div class="modal-header">
+        		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        	        </div>
+
+        	        <form method="POST" enctype="multipart/form-data" id="fm">
+                     <div class="smalllogo">
+
+
+                     </div>
+
+        		        <div class="modal-body">
+        		            {{ form.csrf_token }}
+                            {% if dpass %}
+
+                            {% if ar %}
+                            {% else %}
+
+                            {% endif %}
+                            {% endif %}
+                            {{ render_field(form.name, class="form-control") }}
+                            <p class="pb-3"></p>
+                            {{ render_field(form.password, class="form-control") }}
+                            <p class="pb-6"></p>
+                            {{ render_field(form.rm, class="form-control pull-left") }}
+                            <p class="pb-10"></p>
+        		        </div>
+        		        <div class="modal-footer">
+                            {% if ar %}
+                            {% else %}
+        		                <button type="button" class="close btn btn-md btn-danger pull-left" data-dismiss="modal">{{ translate('cancel', 'en', [defLang]) }}</button>
+        		                <button type="submit" class="close btn btn-md btn-primary">{{ translate("login", 'en', [defLang]) }}</button></a>
+                            {% endif %}
+        		        </div>
+        	        </form>
+
+        	    </div>
+            </div>
+        </div>
+        {% endif %}
+        {% from '_modals.html' import qrModal %}
+        {{ qrModal([['root_qr', translate('QR code main page', 'en', [defLang]), qrcode(url_for('core.root', _external=True))]], close=translate('Exit', 'en', [defLang])) }}
+
+
+    </body>
+
+</html>

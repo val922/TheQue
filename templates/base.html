@@ -1,0 +1,353 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+{% from "_beloadingNotifier.html" import beloadingNotifier %}
+{% from "_wallpapers.js" import wallpapers %}
+<html>
+    <head>
+        <title>{% block title %} FQM {% endblock %}</title>
+        {% block head %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-compatible" content="IE=edge">
+        <meta id="playlist" data-playlist="{{ snb }}">
+        <link href="{{ url_for('static', filename='backstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='backstrap/css/bootstrap-theme.min.css.map') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/neede.css') }}" rel="stylesheet">
+        {{ cssify('static/css/main.less') }}
+        {{ cssify('static/css/spacing.less') }}
+        <link rel="shortcut icon"
+            href="{{ url_for('static', filename='images/favicon.ico') }}"
+        >
+        <link href="{{ url_for('static', filename='css/gfonts.css') }}" rel="stylesheet">
+        <script src="{{ url_for('static', filename='wallpapers.js') }}"></script>
+        <script src="{{ url_for('static', filename='backstrap/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='jquery-ui.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='backstrap/js/bootstrap.min.js') }}"></script>
+        {{ moment.include_moment(local_js='/static/backstrap/moment-with-locales.min.js') }}
+        {{ moment.locale(defLang) }}
+        <script src="{{ url_for('static', filename='sidebar.js') }}"></script>
+        <script src="{{ url_for('static', filename='disciple.js') }}"></script>
+        <script src="{{ url_for('static', filename='extFunctions.js') }}"></script>
+        {{ beloadingNotifier(version, beload=False, release=translate("You are using an older version of FQM, a newer release is available on fqms.github.io", 'en', [defLang]), firefox=translate("You are not using Firefox browser, which this project is designed and most suited for.", 'en', [defLang]), notifier=notifications) }}
+
+
+        {% endblock %}
+    </head>
+    <body>
+        <noscript>
+            /* checking if nojs is on */
+            <style>html{display:none;}</style>
+            <meta http-equiv="refresh" content="0.0;url=/nojs/0">
+        </noscript>
+        <div class="widw">
+            <center><img class="img-responsive mb-1"  style="width: 10%;" src="{{ url_for('static', filename='images/Que.png') }}" alt="Logo"></center>
+            <nav class="navbar navbar-inverse">
+    	        <div class="container-fluid">
+    	            <div class="navbar-header">
+    		            <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+    		                <span class="sr-only">Toggle</span>
+    		                <span class="fa fa-1x fa-toggle-off"></span>
+    		            </button>
+    		            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    		                <span class="sr-only">Toggle navigation</span>
+    		                <span class="icon-bar"></span>
+    		                <span class="icon-bar"></span>
+    		                <span class="icon-bar"></span>
+    		            </button>
+    		            <a class="navbar-brand" href="{{ url_for('core.root') }}">
+                            <img src="{{ url_for('static', filename='images/favicon.png') }}" style="width: 28%" />
+                        </a>
+    	            </div>
+    	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    		            <ul class="nav navbar-nav navbar-left">
+                            <li id="snb1"><a href="{{ url_for('manage_app.manage') }}">{{ translate('Management', 'en', [defLang]) }}</a></li>
+                            {% if getattr(current_user, 'role_id', None) == 1 %}
+    		                    <li id="snb2"><a href="{{ url_for('cust_app.customize') }}">{{ translate('Customization', 'en', [defLang]) }}</a></li>
+                            <li class="dropdown" id='snb3'>
+    			                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ translate('Administration', 'en', [defLang]) }}
+                                    <span class="caret"></span>
+                                </a>
+    			                <ul class="dropdown-menu" role="menu">
+    			                    <li class="dropdown-header">( {{ translate('Users', 'en', [defLang]) }} )</li>
+    			                    <li>
+    				                    <a href="{{ url_for('administrate.users') }}">
+    				                        <span class="fa fa-users"></span>
+    				                        {{ translate('All users', 'en', [defLang]) }}
+                                        </a>
+    			                    </li>
+    			                    <li>
+    				                    <a href="{{ url_for('administrate.user_a') }}">
+    				                        <span class="fa fa-user"></span>
+    				                        {{ translate('Add user', 'en', [defLang]) }}
+                                        </a>
+    			                    </li>
+                                    <li class="dropdown-header">( {{ translate('Database', 'en', [defLang]) }} )</li>
+                                    <li>
+                                        <a href="{{ url_for('administrate.csv') }}">
+                                            <span class="fa fa-database"></span>
+                                            {{ translate('Export ', 'en', [defLang]) }} CSV
+                                        </a>
+                                    </li>
+                                    {% if current_user.id == 1 %}
+                                    <li class="dropdown-header">( {{ translate('Flag Settings', 'en', [defLang]) }} )</li>
+                                    <li>
+                                        <a href="{{ url_for('core.settings', setting='strict_pulling', togo=current_path) }}">
+                                            <span class="fa fa-lock"></span>
+                                            {{ translate('Strict Tasks Pulling', 'en', [defLang]) }} ({{ translate('Disable' if settings.strict_pulling == True else 'Enable', 'en', [defLang]) }})
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('core.settings', setting='single_row', togo=current_path) }}">
+                                            <span class="fa fa-arrow-up"></span>
+                                            {{ translate('Single Row Queuing', 'en', [defLang]) }} ({{ translate('Disable' if settings.single_row == True else 'Enable', 'en', [defLang]) }})
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('core.settings', setting='visual_effects', togo=current_path) }}">
+                                            <span class="fa fa-eye"></span>
+                                            {{ translate('Visual Effects', 'en', [defLang]) }} ({{ translate('Disable' if settings.visual_effects == True else 'Enable', 'en', [defLang]) }})
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('core.settings', setting='notifications', togo=current_path) }}">
+                                            <span class="fa fa-bell"></span>
+                                            {{ translate('Notifications', 'en', [defLang]) }} ({{ translate('Disable' if settings.notifications == True else 'Enable', 'en', [defLang]) }})
+                                        </a>
+                                    </li>
+                                    {% if unix %}
+                                    <li>
+                                        <a href="{{ url_for('core.settings', setting='lp_printing', togo=current_path) }}">
+                                            <span class="fa fa-print"></span>
+                                            {{ translate('Alternative printer driver', 'en', [defLang]) }} ({{ translate('Disable' if settings.lp_printing == True else 'Enable', 'en', [defLang]) }})
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                    {% endif %}
+                                </ul>
+                            </li>
+    		                {% endif %}
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+    		                <li class="dropdown">
+    			                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    			                    {{ translate('Screens', 'en', [defLang]) }}
+                                    <span class="caret"></span>
+                                </a>
+    			                <ul class="dropdown-menu" role="menu">
+                                    <li class="dropdown-header">( {{ translate('General Screens', 'en', [defLang]) }} )</li>
+    			                    <li>
+    				                    <a href="{{ url_for('core.display') }}" target="_blank">
+    				                        <span class="fa fa-television"></span>
+                                            {{ translate('Display screen', 'en', [defLang]) }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#display_qr">
+                                            <span class="fa fa-television"></span>
+                                            {{ translate('Display screen', 'en', [defLang]) }} (QR Code)
+                                        </a>
+                                    </li>
+                                    {% if not settings.single_row %}
+                                    <li>
+    				                    <a href="{{ url_for('core.touch', a=0) }}" target="_blank">
+    				                        <span class="fa fa-desktop"></span>
+                                            {{ translate('Touch screen', 'en', [defLang]) }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-target="#touch_qr" data-toggle="modal">
+                                            <span class="fa fa-desktop"></span>
+                                            {{ translate('Touch screen', 'en', [defLang]) }} (QR Code)
+                                        </a>
+                                    </li>
+                                    {% for office in offices %}
+                                    <li class="dropdown-header">( {{ office.display_text }} )</li>
+                                    <li>
+    				                    <a href="{{ url_for('core.touch', a=0, office_id=office.id) }}" target="_blank">
+    				                        <span class="fa fa-desktop"></span>
+                                            {{ translate('Touch screen', 'en', [defLang]) }}
+                                        </a>
+                                    </li>
+    			                    <li>
+    				                    <a href="{{ url_for('core.display', office_id=office.id) }}" target="_blank">
+    				                        <span class="fa fa-television"></span>
+                                            {{ translate('Display screen', 'en', [defLang]) }}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </li>
+    			            <li class="dropdown">
+    			                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    				                {{ current_user.name }}
+                                    <span class="caret"></span>
+                                </a>
+    			                <ul class="dropdown-menu" role="menu">
+    				                <li class="dropdown-header">
+    				                    ( {% if getattr(current_user, 'role_id', None) == 1 %} Administrator
+    				                    {% elif getattr(current_user, 'role_id', None) == 2 %} Monitor
+    				                    {% else %} Operator {% endif %} )
+    				                </li>
+    				                {% if current_user.id != 1 and getattr(current_user, 'role_id', None) == 1 %}
+    				                    <li class="">
+                                            <a href="{{ url_for('administrate.user_u', u_id=current_user.id) }}">
+    				                            <span class="fa fa-pencil"></span>
+                                                {{ translate('Update ', 'en', [defLang]) }}
+                                            </a>
+    				                    </li>
+    				                {% endif %}
+                                    {% if current_user.id == 1 %}
+                                        <li class="">
+                                            <a href="{{ url_for('administrate.admin_u') }}">
+                                                <span class="fa fa-pencil"></span>
+                                                {{ translate('Update ', 'en', [defLang]) }} Admin
+                                            </a>
+                                        </li>
+                                    {% endif %}
+    				                <li>
+                                        <a href="{{ url_for('administrate.logout') }}">
+    				                        <span class="fa fa-sign-out"></span>
+                                            {{ translate('Logout', 'en', [defLang]) }}
+                                        </a>
+    				                </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                {% set languages = [['en', 'English'], ['it', 'Italian'], ['es', 'Spanish'], ['ar', 'Arabic'], ['fr', 'French']] %}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {% for curLang in languages %}
+                                    {% if defLang == curLang[0] %} {{ curLang[1] }} {% endif %}
+                                    {% endfor %}
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    {% for curLang in languages %}
+                                    <li {% if defLang == curLang[0] %} class="active" {% endif %}>
+                                        <a href="{{ url_for('language_switch' , language=curLang[0]) }}">
+                                            <span class="fa fa-{% if curLang[0] == 'en' %}globe{% else %}language{% endif %}"></span>
+                                            {{curLang[1]}}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+    			            </li>
+    		            </ul>
+    	            </div>
+    	        </div>
+            </nav>
+        </div>
+        <div class="container-fluid main-container">
+            {% block sidebar %}{% endblock %}
+            <div class="col-md-{% if adme %}12{% else %}10{% endif %} content hide postFlash">
+                <!-- For announcement flash message -->
+                <div class="alert alert-dismissable alert-info hide">
+                    <button class="close" onclick="$('.postFlash').addClass('hide')">&times;</button>
+                    {% set tra1 = translate('Notice: repeating announcement successfully.', 'en', [defLang]).split(':') %}
+                    <h4 class="text text-center ar2">[ <strong>{{tra1[0]}}</strong>: {{tra1[1]}}]</h4>
+                </div>
+                <div class="alert alert-dismissable alert-danger hide">
+                    <button class="close" onclick="$('.postFlash').addClass('hide')">&times;</button>
+                    {% set tra2 = translate('Error: failed to repeat announcement.', 'en', [defLang]).split(':') %}
+                    <h4 class="text text-center ar2">[ <strong>{{ tra2[0] }}</strong>: {{ tra2[1] }} ]</h4>
+                </div>
+            </div>
+            {% for category, message in get_flashed_messages(with_categories=true) %}
+                {% set tra = message and translate(message, 'en', [defLang]) %}
+                {% if tra %}
+                <div class="col-md-{% if adme %}12{% else %}10{% endif %} content">
+                    <div class="alert alert-{{ category }} alert-dismissable">
+                        <button class="close" type="button" data-dismiss="alert">&times;</button>
+                        <h4 class="text text-center ar2">[ <strong>{{ tra.split(':')[0] }}</strong>: {{ tra.split(':')[1] }} ]</h4>
+    	            </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+            <div class="col-md-{% if adme %}12{% else %}10{% endif %} content mb-1">
+    	        {% block page_content %} {% endblock %}
+            </div>
+
+
+
+            <footer class="pull-left footer widw mt-3">
+              <div class="container">
+                   <div class="row">
+
+                        <div class="col-md-4 col-sm-6">
+                             <div class="footer-info">
+                                  <div class="section-title">
+                                       <h2>Headquarter</h2>
+                                  </div>
+                                  <address>
+                                       <p>Carramba Business Park, Unit 10,<br> Plot 43173, Phakalane Road, Phakalane, Gaborone, Botswana</p>
+                                  </address>
+
+                                  <ul class="social-icon">
+                                       <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                                       <li><a href="#" class="fa fa-twitter"></a></li>
+                                       <li><a href="#" class="fa fa-instagram"></a></li>
+                                  </ul>
+
+                                  <div class="copyright-text">
+                                       <p>Copyright &copy; 2019 Augmenta Cyber Security</p>
+
+
+                                  </div>
+                             </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6">
+                             <div class="footer-info">
+                                  <div class="section-title">
+                                       <h2>Contact Info</h2>
+                                  </div>
+                                  <address>
+                                       <p>Tel : +267 3116181, Fax : +267 3116182</p>
+
+                                  </address>
+
+                                  <div class="footer_menu">
+                                       <h2>Quick Links</h2>
+                                       <ul>
+                                            <li><a href="https://augcyba.co.za/">Career</a></li>
+
+                                            <li><a href="https://augcyba.co.za/">Terms & Conditions</a></li>
+
+                                       </ul>
+                                  </div>
+                             </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
+                             <div class="footer-info newsletter-form">
+                                  <div class="section-title">
+
+                                  </div>
+                                  <div>
+                                       <div class="form-group">
+
+
+                                       </div>
+                                  </div>
+                             </div>
+                        </div>
+
+                   </div>
+              </div>
+            </footer>
+
+
+
+
+        </div>
+        {% from '_modals.html' import qrModal %}
+        {{ qrModal([['touch_qr', translate('QR code touch screen', 'en', [defLang]), qrcode(url_for('core.touch', a=0, _external=True))],
+        ['display_qr', translate('QR code display screen', 'en', [defLang]), qrcode(url_for('core.display', _external=True))],
+        ['root_qr', translate('QR code main page', 'en', [defLang]), qrcode(url_for('core.root', _external=True))]], close=translate('Exit', 'en', [defLang])) }}
+    </body>
+</html>
