@@ -3,7 +3,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 {% extends "base.html" %}
-{% block title %} FQM - {{ page_title }} {% endblock %}
+{% block title %} TheQue - {{ page_title }} {% endblock %}
 
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "_macros.html" as macros %}
@@ -90,7 +90,7 @@ $(document).ready(function () {
 				</div>
 	    	</div>
 	    	{% for o in tasksp %}
-	    	
+
 	    	<div class="row well {% if o.p %} text-primary {% elif o.on_hold %} text-muted {% else %} text-danger {% endif %} ar1 h4 text-center">
 	    	  <div class="col-xs-12 col-sm-1">
 				<b> {% for oo in o.offices %} {{ oo.prefix }} {% endfor %} {# offices.filter_by(id=o.office_id).first().prefix #}{{ o.number }}.</b>
@@ -132,14 +132,14 @@ $(document).ready(function () {
 				{% endif %}
 			  </div>
 	    	</div>
-	    	
+
 			{% endfor %}
 			{{ spacer([translate('No tickets exist to be displayed', 'en', [defLang]), len(tasksp)]) }}
 	    </div>
 	    <div class="panel-footer text-center">
 			{{ panelFooter([
 				[
-				[translate('Offices total', 'en', [defLang]), len(task.offices)], 
+				[translate('Offices total', 'en', [defLang]), len(task.offices)],
 				[translate('Tickets total', 'en', [defLang]), serial.filter_by(task_id=o_id).count()]
 				],
 				[

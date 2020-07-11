@@ -3,7 +3,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 {% extends "base.html" %}
-{% block title %} FQM - {{ page_title }} {% endblock %}
+{% block title %} TheQue - {{ page_title }} {% endblock %}
 
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "_macros.html" as macros %}
@@ -45,7 +45,7 @@
 				</div>
 	    	</div>
 			{% for o in serialsp %}
-			
+
 	    	<div class="row well {% if o.p %} text-primary {% else %} text-danger {% endif %} h4 text-center">
 				<div class="col-xs-12 col-sm-1">
 				    <b> {{ offices.filter_by(id=o.office_id).first().prefix }}{{ o.number }}.</b>
@@ -71,7 +71,7 @@
         		  <u> {% if o.n %} {{ translate('Registered', 'en', [defLang]) }} {% else %} {{ translate('Printed', 'en', [defLang]) }} {% endif %} </u>
 				</div>
 			</div>
-			
+
 			{% endfor %}
 			{{ spacer([translate('No tickets were found', 'en', [defLang]), len(serialsp)]) }}
 		</div>

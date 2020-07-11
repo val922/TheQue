@@ -3,7 +3,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 {% extends "base.html" %}
-{% block title %} FQM - {{ page_title }} {% endblock %}
+{% block title %} TheQue - {{ page_title }} {% endblock %}
 {% block head %}
 {{ super() }}
 <script>
@@ -108,7 +108,7 @@ $(document).ready(function () {
 				</div>
 	    	</div>
 	    	{% for o in officesp %}
-	     	
+
 				<div class="row well {% if o.p %} text-primary {% elif o.on_hold %} text-muted {% else %} text-danger {% endif %} h4 ar1 text-center">
 		  			<div class="col-xs-12 col-sm-1">
 		    			<b> {{ ooid.prefix }}{{ o.number }}.</b>
@@ -147,7 +147,7 @@ $(document).ready(function () {
 						{% endif %}
 					</div>
 				</div>
-	      	
+
 			{% endfor %}
 			{{ spacer([translate('No tickets been issued yet to display', 'en', [defLang]), len(officesp)]) }}
 	    </div>

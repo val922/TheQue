@@ -29,4 +29,4 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           console=False ,
-          icon='/Users/mrf3/Documents/FQM/static/images/favicon.ico')
+          icon='/Users/mrf3/Documents/FQM/static/images/joining.png')

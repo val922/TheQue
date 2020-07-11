@@ -3,7 +3,7 @@
 - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 {% extends "base.html" %}
-{% block title %} FQM - {{ page_title  }} {% endblock %}
+{% block title %} TheQue - {{ page_title  }} {% endblock %}
 
 {% block head %}
 {% from '_uniqueness.html' import uniqueness %}
@@ -50,7 +50,7 @@ $(document).ready( function () {
         <div class="panel panel-default uniqueness">
             <div class="panel-heading text-center">
                 <h3 class="text-muted">
-                    <strong><span class="fa fa-desktop"></span> {{ translate('Touch screen', 'en', [defLang]) }} - {{ translate('Template', 'en', [defLang]) }} </strong> 
+                    <strong><span class="fa fa-desktop"></span> {{ translate('Touch screen', 'en', [defLang]) }} - {{ translate('Template', 'en', [defLang]) }} </strong>
                 </h3>
             </div>
             <div class="panel-body">
@@ -75,7 +75,7 @@ $(document).ready( function () {
         <div class="panel panel-default uniqueness">
             <div class="panel-heading text-center">
                 <h3 class="text-muted">
-                    <strong><span class="fa fa-desktop"></span> {{ translate('Touch screen', 'en', [defLang]) }} -  {{ translate('Title', 'en', [defLang]) }} </strong> 
+                    <strong><span class="fa fa-desktop"></span> {{ translate('Touch screen', 'en', [defLang]) }} -  {{ translate('Title', 'en', [defLang]) }} </strong>
                 </h3>
             </div>
             <div class="panel-body">
@@ -129,7 +129,7 @@ $(document).ready( function () {
         <div class="panel panel-default uniqueness">
             <div class="panel-heading text-center">
                 <h3 class="text-muted">
-                    <strong><span class="fa fa-desktop"></span> {{ translate('Touch screen', 'en', [defLang]) }} - {{ translate('Notification', 'en', [defLang]) }} </strong> 
+                    <strong><span class="fa fa-desktop"></span> {{ translate('Touch screen', 'en', [defLang]) }} - {{ translate('Notification', 'en', [defLang]) }} </strong>
                 </h3>
             </div>
             <div class="panel-body">
@@ -163,7 +163,7 @@ $(document).ready( function () {
         <div class="panel panel-default uniqueness">
             <div class="panel-heading text-center">
                   <h3 class="text-muted">
-                    <strong><span class="fa fa-desktop"></span> {{ translate('Touch screen', 'en', [defLang]) }} - {{ translate('Background', 'en', [defLang]) }} </strong> 
+                    <strong><span class="fa fa-desktop"></span> {{ translate('Touch screen', 'en', [defLang]) }} - {{ translate('Background', 'en', [defLang]) }} </strong>
                 </h3>
             </div>
             <div class="panel-body">
@@ -176,11 +176,11 @@ $(document).ready( function () {
                 </center>
                 <h3 class="text text-muted text-center ar2 mt-2">| {{ translate('The background image on-which all elements of the Touch Screen will be displayed on . You can choose between a limited variety of default images or to select a specific color and lastly you can as well chose to upload your own special background image', 'en', [defLang]) }} | </h3>
                 <hr>
-                <center> 
+                <center>
                     {{ render_field(form.background, class="form-control") }}
                     <p class="pt-2"></p>
                     {{ form.bcolor(class_="sp") }}
-                </center> 
+                </center>
                 {% if form.errors %}
                 <div class="well mt-2 mb-2">
                     <h3 class="text-center text-warning">- {{ translate('Errors', 'en', [defLang]) }} :</h3>
@@ -203,4 +203,3 @@ $(document).ready( function () {
 
 {{ qrModal([['mym', translate('Template map', 'en', [defLang]), url_for('static', filename='images/map.jpg')]], close=translate('Exit', 'en', [defLang])) }}
 {% endblock %}
-   
