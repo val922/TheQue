@@ -65,7 +65,7 @@
 				</a>
 			</li>
 			{% endif %}
-			<!-- Dropdown--> 
+			<!-- Dropdown-->
 			{% if not settings.single_row %}
 			{% for office in offices %}
 			{% if getattr(current_user, 'role_id', None) != 3 or checkId(current_user.id, office.operators) %}
@@ -150,7 +150,15 @@
 		    </ul>
 		</div><!-- /.navbar-collapse -->
 	    </nav>
+
+      
 	</div>
+
+
     </div>
+
+
 </div>
+
+
 {% endmacro %}
