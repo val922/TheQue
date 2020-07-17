@@ -1379,6 +1379,7 @@
     },
     "LogIn": {
         "en": "LogIn",
+        "fr": "S'identifier",
         "it": "Accesso"
     },
     "Logout": {
@@ -1415,6 +1416,9 @@
         "es": "Plantilla de gesti\u00f3n",
         "fr": "Mod\u00e8le de gestion",
         "it": "Modello di gestione"
+    },
+    "Managementtt": {
+        "en": "Managementtt"
     },
     "Managementttt": {
         "en": "Managementttt"
