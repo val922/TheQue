@@ -113,9 +113,9 @@
         </div>
         <ul class="nav navbar-nav navbar-right collapse navbar-collapse">
           <li class="active"><a href="home">Home</a></li>
-          <li><a href="#service">Service</a></li>
+          <li><a href="#feature">Service</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#contacts">Contacts</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
 
         </ul>
 
@@ -167,14 +167,16 @@
                            {% endif %}
                          {% else %}
 
-                         <a class="button button-primary2" data-target="#upd" data-toggle="modal">
-                         {% endif %}
-                           <strong class='mb-3'>
-                                   {{ translate("LogIn", 'en', [defLang]) }}
-                               </strong>
 
-                         </a>
                        </div>
+
+                       <a class="button button-primary2" data-target="#upd" data-toggle="modal">
+                       {% endif %}
+                         <strong class='mb-3'>
+                                 {{ translate("LogIn", 'en', [defLang]) }}
+                             </strong>
+
+                       </a>
                    </div>
                  {% for category, message in get_flashed_messages(with_categories=true) %}
                  <div class="row mb-1">
@@ -279,7 +281,7 @@ With online booking, you'll capture more of the people looking to schedule an ap
                                             <span><i class="fa fa-users"></i></span>
                                             <figcaption>
                                                  <h3>Queue Management</h3>
-                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                                 <p> is the process of managing and optimizes queues to improve end-user waiting times and teammate productivity.</p>
                                             </figcaption>
                                        </figure>
 
@@ -287,15 +289,15 @@ With online booking, you'll capture more of the people looking to schedule an ap
                                             <span><i class="fa fa-certificate"></i></span>
                                             <figcaption>
                                                  <h3>Production Management</h3>
-                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                                 <p>planning, organising, directing and controlling of production activities.</p>
                                             </figcaption>
                                        </figure>
 
                                        <figure>
                                             <span><i class="fa fa-bar-chart-o"></i></span>
                                             <figcaption>
-                                                 <h3>Company Staticstics</h3>
-                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                                 <h3>Company Statistics</h3>
+                                                 <p> designed to handle  “macro data,”, data computed by different forms of summarization, including grouping and classification.</p>
                                             </figcaption>
                                        </figure>
                                   </div>
@@ -414,7 +416,7 @@ With online booking, you'll capture more of the people looking to schedule an ap
                             {% if ar %}
                             {% else %}
         		                <button type="button" class="close btn btn-md btn-danger pull-left" data-dismiss="modal">{{ translate('cancel', 'en', [defLang]) }}</button>
-        		                <button type="submit" class="close btn btn-md btn-primary">{{ translate("login", 'en', [defLang]) }}</button></a>
+        		                <button type="submit" class="close btn btn-md btn-primary">{{ translate("login", 'en', [defLang]) }}</button>
                             {% endif %}
         		        </div>
         	        </form>
