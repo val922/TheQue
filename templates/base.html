@@ -43,9 +43,21 @@
             <style>html{display:none;}</style>
             <meta http-equiv="refresh" content="0.0;url=/nojs/0">
         </noscript>
+
+  <style media="screen">
+     .navbar-inverse{
+        background-color:#696969;
+        margin-top:10%;
+        border:transparent;
+        color:white;
+
+     }
+  </style>
+
+
         <div class="widw">
-            <center><img class="img-responsive mb-1"  style="width: 9%; height: 19%;  margin-bottom:10%;" src="{{ url_for('static', filename='images/Que.png') }}" alt="Logo"></center>
-            <nav class="navbar navbar-inverse" style="margin-top:15%; background-color:#696969;">
+            <center><img class="img-responsive"  style="width: 7.5%; height: 14%;  margin-bottom:8%; margin-top:-2%;  " src="{{ url_for('static', filename='images/Que.png') }}" alt="Logo"></center>
+            <nav class="navbar navbar-inverse"">
     	        <div class="container-fluid">
     	            <div class="navbar-header" >
     		            <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
@@ -62,11 +74,11 @@
     	            </div>
     	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     		            <ul class="nav navbar-nav navbar-left">
-                            <li id="snb1"><a href="{{ url_for('manage_app.manage') }}">{{ translate('Management', 'en', [defLang]) }}</a></li>
+                            <li id="snb1"><a style="color:white;" href="{{ url_for('manage_app.manage') }}">{{ translate('Management', 'en', [defLang]) }}</a></li>
                             {% if getattr(current_user, 'role_id', None) == 1 %}
-    		                    <li id="snb2"><a href="{{ url_for('cust_app.customize') }}">{{ translate('Customization', 'en', [defLang]) }}</a></li>
+    		                    <li id="snb2"><a style="color:white;" href="{{ url_for('cust_app.customize') }}">{{ translate('Customization', 'en', [defLang]) }}</a></li>
                             <li class="dropdown" id='snb3'>
-    			                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    			                <a style="color:white;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ translate('Administration', 'en', [defLang]) }}
                                     <span class="caret"></span>
                                 </a>
@@ -132,7 +144,7 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
     		                <li class="dropdown">
-    			                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    			                <a style="color:white;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     			                    {{ translate('Screens', 'en', [defLang]) }}
                                     <span class="caret"></span>
                                 </a>
@@ -182,7 +194,7 @@
                                 </ul>
                             </li>
     			            <li class="dropdown">
-    			                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    			                <a style="color:white;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     				                {{ current_user.name }}
                                     <span class="caret"></span>
                                 </a>
@@ -218,7 +230,7 @@
                             </li>
                             <li class="dropdown">
                                 {% set languages = [['en', 'English'], ['it', 'Italian'], ['es', 'Spanish'], ['ar', 'Arabic'], ['fr', 'French']] %}
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a style="color:white;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {% for curLang in languages %}
                                     {% if defLang == curLang[0] %} {{ curLang[1] }} {% endif %}
                                     {% endfor %}

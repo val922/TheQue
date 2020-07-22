@@ -39,7 +39,7 @@ class MainWindow(QWidget):
         super(MainWindow, self).__init__()
         self.app = app
         global_layout = QVBoxLayout(self)
-        icon_path = absolute_path(solve_path('static/images/favicon.png'))
+        icon_path = absolute_path(solve_path('static/images/Que.png'))
         # NOTE: need to use objective message boxes instead of functions to set font
         self.font = QFont("static/gfonts/Amiri-Regular.ttf", 12, QFont.Bold)
         self.fonts = QFont("static/gfonts/Amiri-Regular.ttf", 10, QFont.Bold)
@@ -61,7 +61,7 @@ class MainWindow(QWidget):
         self.show()
 
     def initiate(self, icon):
-        self.setWindowTitle('Free Queue Manager ' + VERSION)
+        self.setWindowTitle(' TheQue Manager ' + VERSION)
         self.setGeometry(300, 300, 200, 150)
         self.setMinimumWidth(500)
         self.setMaximumWidth(500)
@@ -105,7 +105,7 @@ class MainWindow(QWidget):
         self.languages_list.setToolTip(self.get_translation(
             'Select language to change the interface to'))
         self.title = self.get_translation('About FQM')
-        self.about_button.setToolTip(self.get_translation('About FQM'))
+        self.about_button.setToolTip(self.get_translation('About TheQue'))
         self.start_button.setText(self.get_translation('Start'))
         self.start_button.setToolTip(self.get_translation('Start the server'))
         self.stop_button.setText(self.get_translation('Stop'))
@@ -231,18 +231,18 @@ class MainWindow(QWidget):
     def set_about(self, icon, global_layout):
         def show_about():
             message = u" <center> "
-            message += self.get_translation('All credit reserved to the author of FQM version ') + VERSION + u" "
+            message += self.get_translation('All credit reserved to the author of TheQue version ') + VERSION + u" "
             message += self.get_translation(', This work is a free, open-source project licensed ')
             message += self.get_translation(' under Mozilla Public License version 2.0 . <br><br>')
             message += self.get_translation(' visit us for more infos and how-tos :<br> ')
-            message += u"<br> <b><a href='https://fqms.github.io/'>"
-            message += u"https://fqms.github.io </a> </b></center>"
-            title = self.get_translation('About FQM')
+            message += u"<br> <b><a href='https://augcyba.co.za//'>"
+            message += u"https://augcyba.co.za </a> </b></center>"
+            title = self.get_translation('About TheQue')
             return QMessageBox.about(self, title, message)
         self.about_button = QPushButton('', self)
         self.about_button.setIcon(QIcon(icon))
         self.about_button.setIconSize(QSize(150, 70))
-        self.about_button.setToolTip(self.get_translation('About FQM'))
+        self.about_button.setToolTip(self.get_translation('About TheQue'))
         self.about_button.clicked.connect(show_about)
         global_layout.addWidget(self.about_button)
 
@@ -283,8 +283,8 @@ class MainWindow(QWidget):
         message += self.get_translation(' Opps, a critical error has occurred, we will be ')
         message += self.get_translation(
             ' grateful if you can help fixing it, by reporting to us at : <br><br> ')
-        message += u"<br><b><a href='https://fqms.github.io/'> "
-        message += u"https://fqms.github.io </a></b> </center>"
+        message += u"<br> <b><a href='https://augcyba.co.za//'>"
+        message += u"https://augcyba.co.za </a> </b></center>"
         QMessageBox.critical(
             self,
             self.get_translation('Critical Error'),

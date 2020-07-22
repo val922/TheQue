@@ -119,6 +119,9 @@
         "fr": "\u00e0 propos de FQM",
         "it": "su FQM"
     },
+    "About TheQue": {
+        "en": "About TheQue"
+    },
     "Actions": {
         "ar": "\u0623\u0641\u0639\u0627\u0644",
         "en": "Actions",
@@ -258,6 +261,9 @@
         "es": "Todo el cr\u00e9dito reservado al autor de FQM. Este trabajo es un proyecto gratuito de c\u00f3digo abierto con licencia de Mozilla Public License versi\u00f3n 2.0.",
         "fr": "Tout le cr\u00e9dit r\u00e9serv\u00e9 \u00e0 l'auteur de FQM. Ce travail est un projet libre et open-source sous licence publique Mozilla version 2.0.",
         "it": "Tutto il credito \u00e8 riservato all'autore di FQM. Questo lavoro \u00e8 un progetto open source gratuito concesso in licenza con Mozilla Public License versione 2.0."
+    },
+    "All credit reserved to the author of TheQue version ": {
+        "en": "All credit reserved to the author of TheQue version"
     },
     "All tickets": {
         "ar": "\u062c\u0645\u064a\u0639 \u0627\u0644\u062a\u0630\u0627\u0643\u0631",

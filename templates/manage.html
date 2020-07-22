@@ -17,6 +17,8 @@
    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
                rel='stylesheet'>
 
+               <link type="text/css" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+                           rel='stylesheet'>
 
 
 
@@ -43,33 +45,49 @@
 
 <!--/.span3-->
 <!-- MAIN CONTENT-->
-<div class="main-content">
+<div class="main-content" style="margin-top:-4.5%;">
  <div class="section__content section__content--p30">
      <div class="container-fluid">
          <div class="row">
              <div class="col-md-12">
                  <div class="overview-wrap">
                      <h2 class="title-1">overview</h2>
-                     <button class="au-btn au-btn-icon au-btn--blue">
-                         <i class="zmdi zmdi-plus"></i>add item</button>
+
                  </div>
              </div>
          </div>
-         <div class="row m-t-25">
+         <div class="col-sm-6 col-lg-3">
+             <div class="overview-item overview-item--c2">
+                 <div class="overview__inner">
+                     <div class="overview-box clearfix">
+                         <div class="icon">
+                             <i class="zmdi zmdi-shopping-cart"></i>
+                         </div>
+                         <div class="text">
+                             <h2>68</h2>
+                             <span>Members Online</span>
+                         </div>
+                     </div>
+                     <div class="overview-chart">
+                         <canvas id="widgetChart2"></canvas>
+                     </div>
+                 </div>
+             </div>
+         </div>
              <div class="col-sm-6 col-lg-3">
-                 <div class="overview-item overview-item--c1">
+                 <div class="overview-item overview-item--c2">
                      <div class="overview__inner">
                          <div class="overview-box clearfix">
                              <div class="icon">
-                                 <i class="zmdi zmdi-account-o"></i>
+                                 <i class="zmdi zmdi-shopping-cart"></i>
                              </div>
                              <div class="text">
-                                 <h2>368</h2>
-                                 <span>members online</span>
+                                 <h2>88</h2>
+                                 <span>Services Offered</span>
                              </div>
                          </div>
                          <div class="overview-chart">
-                             <canvas id="widgetChart1"></canvas>
+                             <canvas id="widgetChart2"></canvas>
                          </div>
                      </div>
                  </div>
@@ -82,8 +100,8 @@
                                  <i class="zmdi zmdi-shopping-cart"></i>
                              </div>
                              <div class="text">
-                                 <h2>688</h2>
-                                 <span>Services Offered</span>
+                                 <h2>108</h2>
+                                 <span>This week</span>
                              </div>
                          </div>
                          <div class="overview-chart">
@@ -93,37 +111,19 @@
                  </div>
              </div>
              <div class="col-sm-6 col-lg-3">
-                 <div class="overview-item overview-item--c3">
+                 <div class="overview-item overview-item--c2">
                      <div class="overview__inner">
                          <div class="overview-box clearfix">
                              <div class="icon">
-                                 <i class="zmdi zmdi-calendar-note"></i>
+                                 <i class="zmdi zmdi-shopping-cart"></i>
                              </div>
                              <div class="text">
-                                 <h2>1,086</h2>
-                                 <span>this week</span>
+                                 <h2>310</h2>
+                                 <span>total customers</span>
                              </div>
                          </div>
                          <div class="overview-chart">
-                             <canvas id="widgetChart3"></canvas>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-             <div class="col-sm-6 col-lg-3">
-                 <div class="overview-item overview-item--c4">
-                     <div class="overview__inner">
-                         <div class="overview-box clearfix">
-                             <div class="icon">
-                                 <i class="zmdi zmdi-money"></i>
-                             </div>
-                             <div class="text">
-                                 <h2>386</h2>
-                                 <span>total Customers</span>
-                             </div>
-                         </div>
-                         <div class="overview-chart">
-                             <canvas id="widgetChart4"></canvas>
+                             <canvas id="widgetChart2"></canvas>
                          </div>
                      </div>
                  </div>
@@ -131,7 +131,7 @@
          </div>
          <div class="row">
              <div class="col-lg-6">
-                 <div class="au-card recent-report">
+                 <div class="au-card recent-report" style=" height: 59.5%;">
                      <div class="au-card-inner">
                          <h3 class="title-2">recent reports</h3>
                          <div class="chart-info">
@@ -214,7 +214,7 @@ chart.render();
              <div class="col-lg-6">
                  <div class="au-card chart-percent-card">
                      <div class="au-card-inner">
-                         <h3 class="title-2 tm-b-5">char by %</h3>
+                         <h3 class="title-2 tm-b-5">Monthly Report</h3>
                          <div class="row no-gutters">
                              <div class="col-xl-6">
                                  <div class="chart-note-wrap">
@@ -326,11 +326,34 @@ chart.render();
 		    {% endif %}
 		</div>
 
+
+
     </div>
+
 </div>
 
+  <a class="gotopbtn" href="#"> <i class="fas fa-arrow-up"></i> </a>
 
 
+<style media="screen">
+  .gotopbtn{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: #82CAFF;
+    bottom: 10px;
+    padding-top:15px;
+    right: 10px;
+    text-decoration:none;
+    text-align: center;
+    line-height:50px;
+    color: white;
+    font-size:22px;
+    border-radius:5%;
+}
+
+
+</style>
 
 
 

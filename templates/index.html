@@ -12,6 +12,10 @@
         <meta http-equiv="X-UA-compatible" content="IE=edge">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" ></script>
+
+
+
+
         <link href="{{ url_for('static', filename='backstrap/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ url_for('static', filename='backstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet">
         <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet">
@@ -36,6 +40,7 @@
           <link href="{{ url_for('static', filename='css/.css') }}" rel="stylesheet">
         {{ cssify('static/css/main.less') }}
         {{ cssify('static/css/spacing.less') }}
+
         <script src="{{ url_for('static', filename='backstrap/jquery.min.js') }}"></script>
         <script src="{{ url_for('static', filename='jquery-ui.min.js') }}"></script>
         <script src="{{ url_for('static', filename='backstrap/js/bootstrap.min.js') }}"></script>
@@ -50,6 +55,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <link type="text/css" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        rel='stylesheet'>
 
         {{ datepicker.loader() }}
         {{ beloadingNotifier(version, beload=False, release=translate("You are using an older version of FQM, a newer release is available on fqms.github.io", 'en', [defLang]), firefox=translate("You are not using Firefox browser, which this project is designed and most suited for.", 'en', [defLang])) }}
@@ -115,7 +123,7 @@
           <li class="active"><a href="home">Home</a></li>
           <li><a href="#feature">Service</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="contacts.html">Contacts</a></li>
+          
 
         </ul>
 
@@ -309,7 +317,7 @@ With online booking, you'll capture more of the people looking to schedule an ap
                    </div>
               </section>
 
-
+<!--<a class="gotopbtn" href="#"> <i class="fas fa-arrow-up"></i> </a> -->
               <!-- FOOTER -->
           <footer id="footer">
                <div class="container">
@@ -430,5 +438,22 @@ With online booking, you'll capture more of the people looking to schedule an ap
 
 
     </body>
+    <style media="screen">
+      .gotopbtn{
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        background: #62D7FF;
+        bottom: 10px;
+        padding-top:10px;
+        right: 10px;
+        text-decoration:none;
+        text-align: center;
+        line-height:50px;
+        color: white;
+        font-size:22px;
 
+
+      }
+    </style>
 </html>
