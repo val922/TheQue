@@ -56,7 +56,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-        <link type="text/css" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        <link type="text/css" href="https://use.fontawesome.com/releases/v5.14.1/css/all.css"
         rel='stylesheet'>
 
         {{ datepicker.loader() }}
@@ -107,30 +107,7 @@
       <header>
 
      <!-- Navigation -->
-     <nav class="navbar navbar-default navbar-static-top">
-      <div class="container2">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">TheQue</a>
-
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <sapn class="icon-bar"></sapn>
-          </button>
-        </div>
-        <ul class="nav navbar-nav navbar-right collapse navbar-collapse">
-          <li class="active"><a href="home">Home</a></li>
-          <li><a href="#feature">Service</a></li>
-          <li><a href="#about">About</a></li>
-          
-
-        </ul>
-
-
-
-
-      </div>
+     <nav class="navbar navbar-default ">
 
 
 
@@ -175,17 +152,19 @@
                            {% endif %}
                          {% else %}
 
+                        <center> <a class="button button-primary2" data-target="#upd" data-toggle="modal" style="margin-top:-2%; margin-left:100%;   background: url(../static/images/user-circle-solid.svg); background-repeat: no-repeat; background-size: 100%; padding-left:50%; color:transparent;">
+                         {% endif %}
+                            .
 
+                         </a></center>
                        </div>
 
-                       <a class="button button-primary2" data-target="#upd" data-toggle="modal">
-                       {% endif %}
-                         <strong class='mb-3'>
-                                 {{ translate("LogIn", 'en', [defLang]) }}
-                             </strong>
 
-                       </a>
+
                    </div>
+
+
+
                  {% for category, message in get_flashed_messages(with_categories=true) %}
                  <div class="row mb-1">
                      <div class="alert alert-{{ category }} alert-dismissable">
@@ -195,16 +174,21 @@
                      </div>
                  </div>
                  {% endfor %}
+
                </div>
+
+
     </nav>
 
-<header  class="header-area overlay">
+
+
+<header  class="header-area overlay"  style="height:110vh; margin-top:-1.5%;">
 
 
      	<div class="banner">
      		<div class="container">
-     			<h6>The Que</h6>
-     			<h5>Welcome to  TheQue.TheQue is an online queue management system</h5>
+     			<h6>Welcome to TheQue</h6>
+     			<h5>An online queue management system</h5>
      			<a href="#content" class="button button-primary">Learn More</a>
      		</div>
      	</div>
@@ -276,8 +260,8 @@ With online booking, you'll capture more of the people looking to schedule an ap
                   </section>
 
 
-                  <!-- ABOUT -->
-              <section id="about">
+
+              <!--   <section id="about">
                    <div class="container">
                         <div class="row">
 
@@ -315,7 +299,7 @@ With online booking, you'll capture more of the people looking to schedule an ap
 
                         </div>
                    </div>
-              </section>
+              </section> -->
 
 <!--<a class="gotopbtn" href="#"> <i class="fas fa-arrow-up"></i> </a> -->
               <!-- FOOTER -->
@@ -339,7 +323,7 @@ With online booking, you'll capture more of the people looking to schedule an ap
                                    </ul>
 
                                    <div class="copyright-text">
-                                        <p>Copyright &copy; 2019 Augmenta Cyber Security</p>
+                                        <p>Copyright &copy; 2020 Augmenta Cyber Security</p>
 
 
                                    </div>
@@ -374,8 +358,47 @@ With online booking, you'll capture more of the people looking to schedule an ap
 
                                    </div>
                                    <div>
-                                        <div class="form-group">
+                                        <div class="info_footer">
 
+                                          <section id="about">
+                                               <div class="container">
+                                                    <div class="row">
+
+                                                         <div class="col-md-6 col-sm-12">
+                                                              <div class="about-info">
+
+
+                                                                   <figure>
+                                                                        <span><i class="fa fa-users"></i></span>
+                                                                        <figcaption>
+                                                                             <h3>Queue Management</h3>
+                                                                             <p> process of managing and optimizing queues to improve end-user waiting times and teammate productivity.</p>
+                                                                        </figcaption>
+                                                                   </figure>
+
+                                                                   <figure>
+                                                                        <span><i class="fa fa-certificate"></i></span>
+                                                                        <figcaption>
+                                                                             <h3>Production Management</h3>
+                                                                             <p>planning, organising, directing and controlling of production activities.</p>
+                                                                        </figcaption>
+                                                                   </figure>
+
+                                                                   <figure>
+                                                                        <span><i class="fa fa-bar-chart-o"></i></span>
+                                                                        <figcaption>
+                                                                             <h3>Company Statistics</h3>
+                                                                             <p> designed to handle  “macro data,”, data computed by different forms of summarization, including grouping and classification.</p>
+                                                                        </figcaption>
+                                                                   </figure>
+                                                              </div>
+                                                         </div>
+
+
+
+                                                    </div>
+                                               </div>
+                                          </section>
 
                                         </div>
                                    </div>
@@ -452,8 +475,14 @@ With online booking, you'll capture more of the people looking to schedule an ap
         line-height:50px;
         color: white;
         font-size:22px;
+}
 
+.info_footer{
+    width:200%;
+    height:50%;
 
-      }
+    margin-top:-35%;
+}
+
     </style>
 </html>

@@ -292,5 +292,5 @@ def logout():
         return redirect(url_for('core.root'))
 
     logout_user()
-    flash('Notice:done.', 'info')
+    
     return redirect(url_for('core.root'))
